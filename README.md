@@ -12,13 +12,13 @@ OpenAI:
 
 ## For meetup organizers
 
-1- Prepare a PostgreSQL instance with the IMDB database imported
-2- Some participants might not have access to a Slack organization. Prepare a fresh new Slack team and invite participants with "owner" permissions.
-3- Create an OpenAI account with 5€ free credits. It should be sufficient for 10-20 participants.
+- Prepare a PostgreSQL instance with the IMDB database imported
+- Some participants might not have access to a Slack organization. Prepare a fresh new Slack team and invite participants with "owner" permissions.
+- Create an OpenAI account with 5€ free credits. It should be sufficient for 10-20 participants.
 
 Remember the goal of this tuto is not to set up a Slack bot, but to manipulate Langchain. If participants take too much time to start, you can fall back on a simple stdin prompt.
 
-Warning: suggest to the participants to use a different Slack app name and Slack slash command.
+⚠️  Suggest to the participants to use a different Slack app name and Slack slash command.
 
 ## Import and start IMDB database
 
@@ -44,12 +44,12 @@ psql postgres://screeb:screeb@localhost:5432/screeb
 
 ### Create Slack bot
 
-1- Go to https://api.slack.com/apps a create an app using the following [manifest](./assets/slack/manifest.json).
-2- Go to `Basic Information` and click on `Install to Workspace`.
-3- Next, in `Basic Information` page, generate a `App Level Token` with the `connections:write` scope. Copy the `Token` (= SLACK_APP_TOKEN).
-4- Go to `OAuth & Permissions`, copy the `Bot User OAuth Token` (= SLACK_BOT_TOKEN).
-5- Next, navigate to the `Socket Mode` section and toggle the `Enable Socket Mode` button to start receiving events over a WebSocket connection.
-6- Go to `App Home` page and check the box `Allow users to send Slash commands and messages from the messages tab`.
+- Go to https://api.slack.com/apps a create an app using the following [manifest](./assets/slack/manifest.json).
+- Go to `Basic Information` and click on `Install to Workspace`.
+- Next, in `Basic Information` page, generate a `App Level Token` with the `connections:write` scope. Copy the `Token` (= SLACK_APP_TOKEN).
+- Go to `OAuth & Permissions`, copy the `Bot User OAuth Token` (= SLACK_BOT_TOKEN).
+- Next, navigate to the `Socket Mode` section and toggle the `Enable Socket Mode` button to start receiving events over a WebSocket connection.
+- Go to `App Home` page and check the box `Allow users to send Slash commands and messages from the messages tab`.
 
 ### Create a simple Slack command
 
@@ -77,10 +77,10 @@ Documentation:
 - https://python.langchain.com/docs/modules/agents/toolkits/sql_database
 
 Advanced:
-* Limit the table visible by your AI
+* If you run this tutorial against your data warehouse, don't forget to create a read-only user. OpenAI is able to generate `DROP TABLE` queries. 😁 😘
+* Limit the tables visible by your AI
 * Create a custom SQL view to select the data you wish to expose
-* Feel free to customize your prompt: https://github.com/hwchase17/langchain/blob/master/langchain/chains/sql_database/prompt.py
-* If you run this tutorial against your data warehouse, don't forget to create a read-only user. 😁 😘
+* Customize your prompt: https://github.com/hwchase17/langchain/blob/master/langchain/chains/sql_database/prompt.py
 * [Format your Slack response](https://api.slack.com/reference/surfaces/formatting#inline-code) and write the SQL query in a note.
 
 __Example 1__:
