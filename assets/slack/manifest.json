@@ -1,0 +1,51 @@
+{
+    "display_information": {
+        "name": "Clippy"
+    },
+    "features": {
+        "bot_user": {
+            "display_name": "Clippy",
+            "always_online": true
+        }
+    },
+    "oauth_config": {
+        "scopes": {
+            "user": [
+                "channels:read"
+            ],
+            "bot": [
+                "app_mentions:read",
+                "channels:read",
+                "chat:write",
+                "commands",
+                "dnd:read",
+                "im:history",
+                "im:read",
+                "im:write",
+                "mpim:history",
+                "mpim:read",
+                "mpim:write",
+                "pins:write",
+                "team:read",
+                "users:read",
+                "users:read.email",
+                "users:write",
+                "channels:history"
+            ]
+        }
+    },
+    "settings": {
+        "event_subscriptions": {
+            "bot_events": [
+                "app_mention",
+                "message.channels"
+            ]
+        },
+        "interactivity": {
+            "is_enabled": true
+        },
+        "org_deploy_enabled": false,
+        "socket_mode_enabled": true,
+        "token_rotation_enabled": false
+    }
+}

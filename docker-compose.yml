@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  postgresql:
+    image: postgres:15.0
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=screeb
+      - POSTGRES_USER=screeb
+      - POSTGRES_PASSWORD=screeb
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./.data/postgresql:/var/lib/postgresql/data
+    restart: unless-stopped
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 65535
+        hard: 65535
+
+  # elasticsearch:
+  #   image: docker.elastic.co/elasticsearch/elasticsearch:8.8.0
+  #   ports:
+  #     - "9200:9200"
+  #   environment:
+  #     - ELASTIC_PASSWORD=screeb
+  #     - discovery.type=single-node
+  #     - xpack.security.enabled=true
+  #     - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+  #     - cluster.routing.allocation.disk.threshold_enabled=false
+  #   volumes:
+  #     - ./.data/elasticsearch:/usr/share/elasticsearch/data
+  #   restart: unless-stopped
+  #   ulimits:
+  #     nproc: 65535
+  #     nofile:
+  #       soft: 65535
+  #       hard: 65535
